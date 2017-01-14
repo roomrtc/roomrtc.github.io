@@ -1,0 +1,11 @@
+# Setup
+name:         RoomRTC
+tagline:      RoomRTC enables quick development of WebRTC
+baseurl:      ""
+
+# Gems
+gems:
+  - jekyll-paginate
+
+#Others
+markdown: kramdown
