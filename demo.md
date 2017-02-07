@@ -6,27 +6,25 @@ title: RoomRTC Demo
 <!-- load styles cdn -->
 <link href="{{ site.baseurl }}/dist/style.css" rel="stylesheet" type="text/css" media="screen" />
 
+{% raw %}
 <div ng-app="demo" ng-controller="roomController">
     <h1>You are in room: <span ng-bind="room">...</span></h1>
-    {% raw %}
     <video class="mirror" width="300" height="200" ng-src="{{localVideo}}" autoplay="true"></video>
-    {% endraw %}
     <div class="media-controls">
         <input type="button" value="Stop" ng-click="stop()">&nbsp;
         <input type="button" value="Start" ng-click="start()">
     </div>
     <div id="remotes">
         <div class="video" ng-repeat="remoteVideo in remoteVideos">
-            {% raw %}
             <video ng-src="{{remoteVideo}}" autoplay="true"></video>
-            {% raw %}
         </div>
     </div>
     <p>Display list clients</p>
     <ul>
-        {% raw %}<li ng-repeat="(id, client) in clients">{{ $index + 1 }}: [{{ id }},{{ client.name }}]</li>{% raw %}
+        <li ng-repeat="(id, client) in clients">{{ $index + 1 }}: [{{ id }},{{ client.name }}]</li>
     </ul>
 </div>
+{% endraw %}
 
 <script src="{{ site.baseurl }}/dist/roomrtc.latest.js"></script>
 <script src="{{ site.baseurl }}/dist/angular-v1.4.9.js"></script>
