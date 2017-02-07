@@ -8,14 +8,14 @@ title: RoomRTC Demo
 
 <div ng-app="demo" ng-controller="roomController">
     <h1>You are in room: <span ng-bind="room">...</span></h1>
-    <video class="mirror" width="300" height="200" ng-src="{{localVideo}}" autoplay="true"></video>
+    <video class="mirror" width="300" height="200" ng-src="\{{localVideo}}" autoplay="true"></video>
     <div class="media-controls">
         <input type="button" value="Stop" ng-click="stop()">&nbsp;
         <input type="button" value="Start" ng-click="start()">
     </div>
     <div id="remotes">
         <div class="video" ng-repeat="remoteVideo in remoteVideos">
-            <video ng-src="{{remoteVideo}}" autoplay="true"></video>
+            <video ng-src="\{{remoteVideo}}" autoplay="true"></video>
         </div>
     </div>
     <p>Display list clients</p>
