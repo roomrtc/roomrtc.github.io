@@ -24,7 +24,7 @@ title: RoomRTC Demo
     </div>
     <p>Display list clients</p>
     <ul>
-        <li ng-repeat="(id, client) in clients">{{ $index + 1 }}: [{{ id }},{{ client.name }}]</li>
+        {% raw %}<li ng-repeat="(id, client) in clients">{{ $index + 1 }}: [{{ id }},{{ client.name }}]</li>{% raw %}
     </ul>
 </div>
 
