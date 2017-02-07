@@ -33,7 +33,7 @@ title: RoomRTC Demo
             $scope.remoteVideos = [];
 
             var room = $scope.room = (location.search && location.search.split('?')[1]) || "demo";
-            var roomRTC = new RoomRTC({ url: '/' });
+            var roomRTC = new RoomRTC();
             roomRTC.on("connected", function (id) {
                 console.log("connected connectionId: ", id);
             });
