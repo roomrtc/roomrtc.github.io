@@ -8,7 +8,8 @@ title: RoomRTC Demo
 
 {% raw %}
 <div ng-app="demo" ng-controller="roomController">
-    <h1>You are in room: <span ng-bind="room">...</span></h1>
+    <h1 ng-if="!isConnected">Connecting to: <span ng-bind="room">demo</span>...</h1>
+    <h1 ng-if="isConnected">You are in room: <span ng-bind="room">demo</span></h1>
     <video class="mirror" width="300" height="200" ng-src="{{localVideo}}" autoplay="true"></video>
     <div class="media-controls">
         <input type="button" value="Stop" ng-click="stop()">&nbsp;
@@ -33,9 +34,18 @@ title: RoomRTC Demo
         .controller("roomController", function ($scope, $timeout, $sce) {
             $scope.localVideo = null;
             $scope.remoteVideos = {};
+            $scope.isConnected = false;
 
             var room = $scope.room = (location.search && location.search.split('?')[1]) || "demo";
             var roomRTC = new RoomRTC();
+
+            roomRTC.initMediaSource()
+                .then(stream => {
+                    var streamUrl = roomRTC.getStreamAsUrl(stream);
+                    $timeout(function () {
+                        $scope.localVideo = $sce.trustAsResourceUrl(streamUrl);
+                    });
+                });
 
             roomRTC.on("connected", function (id) {
                 console.log("connected connectionId: ", id);
@@ -43,17 +53,11 @@ title: RoomRTC Demo
 
             roomRTC.on("readyToCall", function (id) {
                 console.log("readyToCall, connectionId: ", id);
-                roomRTC.initMediaSource()
-                    .then(stream => {
-                        var streamUrl = roomRTC.getStreamAsUrl(stream);
-                        $timeout(function () {
-                            $scope.localVideo = $sce.trustAsResourceUrl(streamUrl);
-                        });
-                        return roomRTC.joinRoom(room);
-                    })
+                roomRTC.joinRoom(room)
                     .then(roomData => {
                         console.log("joinRoom ok: ", roomData);
                         $timeout(function () {
+                            $scope.isConnected = true;
                             $scope.clients = roomData.clients;
                         });
                         return roomData.clients;
