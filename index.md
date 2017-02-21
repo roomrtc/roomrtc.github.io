@@ -3,14 +3,15 @@ layout: default
 title: RoomRTC enables quick development of WebRTC
 ---
 
-## Creating a new roomrtc application is easy then you can send `video`, `audio`, `message` and `data` in realtime.
+## Creating a new roomrtc application is easy and then you can send `video`, `audio`, `message` and `data` in realtime.
 
-Here is the list demos you can do with roomrtc:
+Here is the list of demos you can do with roomrtc:
 
 * [Video chat](/demo?room43)
 * [Audio chat](/demo?room44)
 * [File transfer](/filetransfer?room45)
 * [Simple getUserMedia](/gum)
+* More ...
 
 # 3 easy steps to build
 
@@ -20,7 +21,7 @@ Here is the list demos you can do with roomrtc:
 <!DOCTYPE html>
 <html>
     <head>
-        <script src="https://roomrtc.github.io/dist/roomrtc.latest.js"></script> 
+        <script src="https://roomrtc.github.io/dist/roomrtc.min.js"></script> 
     </head>
     <body>
         <video id="localVideo" height="300"></video>
@@ -33,12 +34,28 @@ Here is the list demos you can do with roomrtc:
 
 ```js
 var roomrtc = new RoomRTC();
+var remotesVideos = {};
 
-roomrtc.initMediaSource()
-    .then(stream => {
-        var streamUrl = roomrtc.getStreamAsUrl(stream);
-        // ... support to bind html, or use angular
-    });
+roomrtc.initMediaSource().then(stream => {
+    var streamUrl = roomrtc.getStreamAsUrl(stream);
+    // ... set video streamUrl to localVideo
+});
+
+roomrtc.on("videoAdded", function(pc, stream) {
+    var pid = pc.id;
+    var streamUrl = roomRTC.getStreamAsUrl(stream);
+    console.log("Ohh, we have a new participant", pid);
+    remotesVideos[pid] = streamUrl;
+    // ... add video streamUrl to remotesVideos
+});
+
+roomrtc.on("videoRemoved", function(pc) {
+    var pid = pc.id;
+    var url = remoteVideos[pid];
+    roomRTC.revokeObjectURL(url);
+    console.log("Ohh, a participant has gone", pid);
+    delete remotesVideos[url];
+}
 ```
 
 ## 3. Ready to join room
