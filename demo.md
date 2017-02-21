@@ -27,7 +27,7 @@ title: RoomRTC Demo
 </div>
 {% endraw %}
 
-<script src="{{ site.baseurl }}/dist/roomrtc.latest.js"></script>
+<script src="{{ site.baseurl }}/dist/roomrtc.min.js"></script>
 <script src="{{ site.baseurl }}/dist/angular-v1.4.9.js"></script>
 <script type="text/javascript">
     angular.module("demo", [])

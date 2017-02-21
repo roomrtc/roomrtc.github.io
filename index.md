@@ -3,13 +3,56 @@ layout: default
 title: RoomRTC enables quick development of WebRTC
 ---
 
-Checkout page: [Demo](/demo)
+## Creating a new roomrtc application is easy then you can send `video`, `audio`, `message` and `data` in realtime.
 
-Create a new roomrtc application:
+Here is the list demos you can do with roomrtc:
+
+* [Video chat](/demo?room43)
+* [Audio chat](/demo?room44)
+* [File transfer](/filetransfer?room45)
+* [Simple getUserMedia](/gum)
+
+# 3 easy steps to build
+
+## 1. Design an html page
+
+```html
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://roomrtc.github.io/dist/roomrtc.latest.js"></script> 
+    </head>
+    <body>
+        <video id="localVideo" height="300"></video>
+        <div id="remotesVideos"></div>
+    </body>
+</html>
+```
+
+## 2. Create application object
 
 ```js
-var roomRTC = new RoomRTC();
-roomRTC.on("connected", function (id) {
-    console.log("connected connectionId: ", id);
+var roomrtc = new RoomRTC();
+
+roomrtc.initMediaSource()
+    .then(stream => {
+        var streamUrl = roomrtc.getStreamAsUrl(stream);
+        // ... support to bind html, or use angular
+    });
+```
+
+## 3. Ready to join room
+
+```js
+var room = 'demo';
+roomrtc.on('readyToCall', function (id) {
+    roomrtc.joinRoom(room)
+        .then(roomData => {
+            console.log('joinRoom ok: ', roomData);
+            return roomData.clients;
+        })
+        .catch(err => {
+            console.error("joinRoom error: ", err);
+        });
 });
 ```
