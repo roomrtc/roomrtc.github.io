@@ -10,7 +10,7 @@ Here is the list of demos you can do with roomrtc:
 * [Video chat](/demo?room43)
 * [Audio chat](/demo?room44)
 * [File transfer](/filetransfer?room45)
-* [Simple getUserMedia](/gum)
+* [Capture Photos from Camera](/capture)
 * And more ...
 
 # 3 easy steps to build
