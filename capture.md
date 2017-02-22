@@ -1,6 +1,6 @@
 ---
 layout: page
-title: getUserMedia &middot; RoomRTC
+title: Capture Photos from Camera &middot; RoomRTC
 ---
 
 <!-- load styles cdn -->
