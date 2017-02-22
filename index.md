@@ -15,19 +15,10 @@ Here is the list of demos you can do with roomrtc:
 
 # 3 easy steps to build
 
-## 1. Design an html page
+## 1. Include the library
 
 ```html
-<!DOCTYPE html>
-<html>
-    <head>
-        <script src="https://roomrtc.github.io/dist/roomrtc.min.js"></script> 
-    </head>
-    <body>
-        <video id="localVideo" height="300"></video>
-        <div id="remotesVideos"></div>
-    </body>
-</html>
+<script src="https://roomrtc.github.io/dist/roomrtc.min.js"></script> 
 ```
 
 ## 2. Create application object
@@ -38,22 +29,24 @@ var remotesVideos = {};
 
 roomrtc.initMediaSource().then(stream => {
     var streamUrl = roomrtc.getStreamAsUrl(stream);
-    // ... set video streamUrl to localVideo
+    // Show local stream in some video/canvas element.
+}).catch(err => {
+    console.error('Failed to get local stream', err);
 });
 
-roomrtc.on("videoAdded", function(pc, stream) {
+roomrtc.on('videoAdded', function(pc, stream) {
     var pid = pc.id;
     var streamUrl = roomRTC.getStreamAsUrl(stream);
-    console.log("Ohh, we have a new participant", pid);
+    console.log('Ohh, we have a new participant', pid);
     remotesVideos[pid] = streamUrl;
-    // ... add video streamUrl to remotesVideos
+    // Show remote stream in some video/canvas element.
 });
 
-roomrtc.on("videoRemoved", function(pc) {
+roomrtc.on('videoRemoved', function(pc) {
     var pid = pc.id;
     var url = remoteVideos[pid];
     roomRTC.revokeObjectURL(url);
-    console.log("Ohh, a participant has gone", pid);
+    console.log('Ohh, a participant has gone', pid);
     delete remotesVideos[url];
 }
 ```
@@ -69,7 +62,7 @@ roomrtc.on('readyToCall', function (id) {
             return roomData.clients;
         })
         .catch(err => {
-            console.error("joinRoom error: ", err);
+            console.error('joinRoom error: ', err);
         });
 });
 ```
