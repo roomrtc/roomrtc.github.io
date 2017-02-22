@@ -10,8 +10,8 @@ Here is the list of demos you can do with roomrtc:
 * [Video chat](/demo?room43)
 * [Audio chat](/demo?room44)
 * [File transfer](/filetransfer?room45)
-* [Simple getUserMedia](/gum)
-* More ...
+* [Capture Photos from Camera](/capture)
+* And more ...
 
 # 3 easy steps to build
 
@@ -36,7 +36,7 @@ roomrtc.initMediaSource().then(stream => {
 
 roomrtc.on('videoAdded', function(pc, stream) {
     var pid = pc.id;
-    var streamUrl = roomRTC.getStreamAsUrl(stream);
+    var streamUrl = roomrtc.getStreamAsUrl(stream);
     console.log('Ohh, we have a new participant', pid);
     remotesVideos[pid] = streamUrl;
     // Show remote stream in some video/canvas element.
@@ -45,7 +45,7 @@ roomrtc.on('videoAdded', function(pc, stream) {
 roomrtc.on('videoRemoved', function(pc) {
     var pid = pc.id;
     var url = remoteVideos[pid];
-    roomRTC.revokeObjectURL(url);
+    roomrtc.revokeObjectURL(url);
     console.log('Ohh, a participant has gone', pid);
     delete remotesVideos[url];
 }
