@@ -13,6 +13,6 @@
 }
 
 a:focus, a:hover {
-     color: #fff; 
+     /*color: #fff; */
      text-decoration: none; 
 }
