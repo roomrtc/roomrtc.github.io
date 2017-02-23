@@ -3,8 +3,7 @@ layout: page
 title: Capture Photos from Camera &middot; RoomRTC
 ---
 
-<!-- load styles cdn -->
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css" media="screen" />
+<!-- load app styles -->
 <link href="{{ site.baseurl }}/assets/css/capture.css" rel="stylesheet" type="text/css" media="screen" />
 
 <!-- load app scripts -->
