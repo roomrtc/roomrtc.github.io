@@ -8,7 +8,7 @@ title: RoomRTC enables quick development of WebRTC
 Here is the list of demos you can do with roomrtc:
 
 * [Video chat](/demo?room43)
-* [Audio chat](/demo?room44)
+* [Audio chat](/audio?room44)
 * [File transfer](/filetransfer?room45)
 * [Capture Photos from Camera](/capture)
 * And more ...
