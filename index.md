@@ -25,7 +25,7 @@ Here is the list of demos you can do with roomrtc:
 
 ```js
 var roomrtc = new RoomRTC();
-var remotesVideos = {};
+var remoteVideos = {};
 
 roomrtc.initMediaSource().then(stream => {
     var streamUrl = roomrtc.getStreamAsUrl(stream);
@@ -38,7 +38,7 @@ roomrtc.on('videoAdded', function(pc, stream) {
     var pid = pc.id;
     var streamUrl = roomrtc.getStreamAsUrl(stream);
     console.log('Ohh, we have a new participant', pid);
-    remotesVideos[pid] = streamUrl;
+    remoteVideos[pid] = streamUrl;
     // Show remote stream in some video/canvas element.
 });
 
@@ -47,7 +47,7 @@ roomrtc.on('videoRemoved', function(pc) {
     var url = remoteVideos[pid];
     roomrtc.revokeObjectURL(url);
     console.log('Ohh, a participant has gone', pid);
-    delete remotesVideos[url];
+    delete remoteVideos[url];
 }
 ```
 
