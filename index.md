@@ -18,7 +18,7 @@ Here is the list of demos you can do with roomrtc:
 ## 1. Include the library
 
 ```html
-<script src="https://roomrtc.github.io/dist/roomrtc.min.js"></script> 
+<script src="https://roomrtc.github.io/latest/roomrtc.min.js"></script> 
 ```
 
 ## 2. Create application object
