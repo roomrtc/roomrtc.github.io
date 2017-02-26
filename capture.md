@@ -7,7 +7,7 @@ title: Capture Photos from Camera &middot; RoomRTC
 <link href="{{ site.baseurl }}/assets/css/capture.css" rel="stylesheet" type="text/css" media="screen" />
 
 <!-- load app scripts -->
-<script src="{{ site.baseurl }}/dist/roomrtc.min.js"></script>
+<script src="{{ site.baseurl }}/latest/roomrtc.min.js"></script>
 <script src="{{ site.baseurl }}/assets/js/capture.js"></script>
 
 <div class="contentarea">

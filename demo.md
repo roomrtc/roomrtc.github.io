@@ -4,7 +4,7 @@ title: Demo video chat &middot; RoomRTC
 ---
 
 <!-- load styles cdn -->
-<link href="{{ site.baseurl }}/dist/style.css" rel="stylesheet" type="text/css" media="screen" />
+<link href="{{ site.baseurl }}/latest/style.css" rel="stylesheet" type="text/css" media="screen" />
 
 {% raw %}
 <div ng-app="demo" ng-controller="roomController">
@@ -27,8 +27,8 @@ title: Demo video chat &middot; RoomRTC
 </div>
 {% endraw %}
 
-<script src="{{ site.baseurl }}/dist/roomrtc.min.js"></script>
-<script src="{{ site.baseurl }}/dist/angular-v1.4.9.js"></script>
+<script src="{{ site.baseurl }}/latest/roomrtc.min.js"></script>
+<script src="{{ site.baseurl }}/latest/angular-v1.4.9.js"></script>
 <script type="text/javascript">
     angular.module("demo", [])
         .controller("roomController", function ($scope, $timeout, $sce) {

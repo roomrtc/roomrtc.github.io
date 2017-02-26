@@ -8,7 +8,7 @@ title: RoomRTC enables quick development of WebRTC
 Here is the list of demos you can do with roomrtc:
 
 * [Video chat](/demo?room43)
-* [Audio chat](/demo?room44)
+* [Audio chat](/audio?room44)
 * [File transfer](/filetransfer?room45)
 * [Capture Photos from Camera](/capture)
 * And more ...
@@ -18,7 +18,7 @@ Here is the list of demos you can do with roomrtc:
 ## 1. Include the library
 
 ```html
-<script src="https://roomrtc.github.io/dist/roomrtc.min.js"></script> 
+<script src="https://roomrtc.github.io/latest/roomrtc.min.js"></script> 
 ```
 
 ## 2. Create application object
