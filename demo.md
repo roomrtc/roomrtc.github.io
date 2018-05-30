@@ -52,10 +52,6 @@ title: Demo video chat &middot; RoomRTC
 
             roomrtc.on("connected", function (id) {
                 console.log("connected connectionId: ", id);
-            });
-
-            roomrtc.on("readyToCall", function (id) {
-                console.log("readyToCall, connectionId: ", id);
                 roomrtc.joinRoom(room)
                     .then(roomData => {
                         console.log("joinRoom ok: ", roomData);
@@ -68,6 +64,10 @@ title: Demo video chat &middot; RoomRTC
                     .catch(err => {
                         console.error("joinRoom error: ", err);
                     });
+            });
+
+            roomrtc.on("readyToCall", function (id) {
+                console.log("readyToCall, connectionId: ", id);
             });
 
             roomrtc.on("videoAdded", function(pc, stream) {
