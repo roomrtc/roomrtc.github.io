@@ -27,7 +27,7 @@ title: Demo video chat &middot; RoomRTC
 </div>
 {% endraw %}
 
-<script src="{{ site.baseurl }}/latest/roomrtc.min.js"></script>
+<script src="{{ site.baseurl }}/latest/roomrtc.bundle.js"></script>
 <script src="{{ site.baseurl }}/latest/angular-v1.4.9.js"></script>
 <script type="text/javascript">
     angular.module("demo", [])
@@ -45,6 +45,9 @@ title: Demo video chat &middot; RoomRTC
                     $timeout(function () {
                         $scope.localVideo = $sce.trustAsResourceUrl(streamUrl);
                     });
+                })
+                .catch(err => {
+                    console.error('Failed to get local stream', err);
                 });
 
             roomrtc.on("connected", function (id) {
