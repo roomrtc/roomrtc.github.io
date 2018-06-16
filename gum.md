@@ -21,7 +21,7 @@ video {
         <input type="button" value="VGA" ng-click="vga()">
         <input type="button" value="HD" ng-click="hd()">
     </div>
-    <p bind="dimensions"></p>
+    <p ng-bind="dimensions"></p>
     <video class="mirror" ng-src="{{localVideo}}" autoplay="true"></video>
 </div>
 {% endraw %}
@@ -84,7 +84,9 @@ video {
                     $timeout(function () {
                         $scope.localVideo = $sce.trustAsResourceUrl(streamUrl);
                     });
-                });
+                }).catch((err) => {
+                    console.log('GUM ERROR:', err)
+                })
             }
 
             $scope.vga = function () {
@@ -94,7 +96,9 @@ video {
                     $timeout(function () {
                         $scope.localVideo = $sce.trustAsResourceUrl(streamUrl);
                     });
-                });
+                }).catch((err) => {
+                    console.log('GUM ERROR:', err)
+                })
             }
 
             $scope.hd = function () {
@@ -104,7 +108,9 @@ video {
                     $timeout(function () {
                         $scope.localVideo = $sce.trustAsResourceUrl(streamUrl);
                     });
-                });
+                }).catch((err) => {
+                    console.log('GUM ERROR:', err)
+                })
             }
         });
 </script>
